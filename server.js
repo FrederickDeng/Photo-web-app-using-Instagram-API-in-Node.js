@@ -1,7 +1,8 @@
 // grab all the package
 var express = require('express');
-var app = express();
+var config = require('./config.js');
 var ig = require('instagram-node').instagram();
+var app = express();
 
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
@@ -18,10 +19,10 @@ app.get('/', function(req, res){
     });
 });
 
-app.listen(8080, function(error){
+app.listen(config.port, function(error){
     if (error) {
         console.log("Error");
     } else {
-        console.log("Listening on port 8080");
+        console.log("Listening on port " + config.port);
     }
 });
